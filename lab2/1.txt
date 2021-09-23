@@ -1,0 +1,7 @@
+lab2
+
+DDL is used to define data structures
+DML is used to manipulate data itself
+
+a) CREATE, DROP, ALTER
+b)INSERT, DELETE, SELECT, MERGE
