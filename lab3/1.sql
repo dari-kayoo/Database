@@ -20,9 +20,9 @@ WHERE tot_cred > 45 and tot_cred < 90;
 
 SELECT *
 FROM student
-WHERE RIGHT(name,1) = 'a' or RIGHT(name,1) = 'e' or
-      RIGHT(name,1) = 'i' or RIGHT(name,1) = 'o' or
-      RIGHT(name,1) = 'u' or RIGHT(name,1) = 'y';
+WHERE name like '%a' or name like '%e' or
+      name like '%i' or name like '%o' or
+      name like '%u' or name like '%y';
 
 SELECT *
 FROM prereq
