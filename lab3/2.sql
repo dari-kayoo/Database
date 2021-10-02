@@ -29,3 +29,20 @@ WHERE student.id IN
              WHERE dept_name LIKE '%Comp. Sci.%')
              GROUP BY takes.id
              HAVING COUNT(course_id) > 3);
+             
+SELECT *
+FROM instructor
+WHERE dept_name = 'Biology' or dept_name = 'Philosophy' or dept_name = 'Music';
+
+SELECT *
+FROM instructor
+WHERE id IN
+      (SELECT DISTINCT(teaches.id)
+       FROM teaches
+       WHERE teaches.id NOT IN
+             (SELECT DISTINCT (teaches.id)
+              FROM teaches
+              WHERE year = 2017)
+       and year = 2018);
+
+             
