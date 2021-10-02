@@ -3,11 +3,14 @@ FROM instructor
 GROUP BY dept_name
 ORDER BY avg_dept_sal;
 
-SELECT building, COUNT( course_id ) AS cnt
+SELECT building, COUNT( course_id )
 FROM section
 GROUP BY building
-ORDER BY cnt DESC
-LIMIT 1;
+HAVING COUNT(course_id) = (
+    SELECT COUNT( course_id )
+    FROM section
+    GROUP BY building
+    LIMIT 1);
 
 SELECT dept_name, COUNT(course_id)
 FROM course
