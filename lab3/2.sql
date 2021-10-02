@@ -8,3 +8,24 @@ FROM section
 GROUP BY building
 ORDER BY cnt DESC
 LIMIT 1;
+
+SELECT dept_name, COUNT(course_id)
+FROM course
+GROUP BY dept_name
+HAVING COUNT(course_id) =
+       (select COUNT(course_id)
+        from course
+        GROUP BY dept_name
+        LIMIT 1);
+        
+SELECT student.id, student.name
+FROM student
+WHERE student.id IN
+      (SELECT takes.id
+       FROM takes
+       WHERE course_id IN
+             (SELECT course_id
+             FROM course
+             WHERE dept_name LIKE '%Comp. Sci.%')
+             GROUP BY takes.id
+             HAVING COUNT(course_id) > 3);
