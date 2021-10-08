@@ -8,7 +8,7 @@ WHERE building = 'Watson' or building = 'Packard';
 
 SELECT *
 FROM course
-WHERE dept_name = 'Computer Science';
+WHERE dept_name = 'Comp. Sci.';
 
 SELECT *
 FROM section
