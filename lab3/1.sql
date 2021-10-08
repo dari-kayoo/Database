@@ -22,7 +22,7 @@ SELECT *
 FROM student
 WHERE name like '%a' or name like '%e' or
       name like '%i' or name like '%o' or
-      name like '%u' or name like '%y';
+      name like '%u';
 
 SELECT *
 FROM prereq
