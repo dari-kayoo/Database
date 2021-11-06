@@ -1,0 +1,20 @@
+SELECT *
+FROM a2;
+
+SELECT *
+FROM b2;
+
+SELECT *
+FROM c2;
+
+SELECT *
+FROM d2;
+
+SELECT *
+FROM e2;
+
+SELECT *
+FROM f2;
+
+SELECT *
+FROM g2;
