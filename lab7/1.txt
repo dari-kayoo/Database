@@ -1,0 +1,9 @@
+Large objects (photos, videos, CAD files, etc.) are stored as
+a large object:
+• blob: binary large object -- object is a large collection of
+uninterpreted binary data (whose interpretation is left to
+an application outside of the database system)
+• clob: character large object -- object is a large collection
+of character data
+ When a query returns a large object, a pointer is returned
+rather than the large object itself.
