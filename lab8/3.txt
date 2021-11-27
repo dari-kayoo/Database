@@ -1,0 +1,24 @@
+Function:
+It is one among the fundamental thought in the computer programming. It is used to calculate something from a given input. 
+Hence it got its name from Mathematics. Function can be either user defined or predefined. 
+The function program has a block of code that performs some specific tasks or functions.
+
+Procedure:
+In programming a particular set of instructions or commands along known as a procedure. 
+Counting on the programming language it is known as as procedure, subroutine, function or a subprogram.
+
+Difference between Function and Procedure:
+1.	A function deals with as an expression.	Whereas a procedure does not deal with as an expression.
+2.	Function is used to calculate something from a given input. Hence it got its name from Mathematics.	
+While procedure is the set of commands, which are executed in a order.
+3.	The function can be called by a procedure.	But a procedure can not be called by a function.
+4.	In sql, inside the function we can not use the DML(Data manipulation language) commands such as Insert, Delete, Update.	
+Here, in sql, inside the procedure we can use DML commands.
+5.	Functions can be called through sql queries.	However, the procedure can’t be called through a sql query.
+6.	Each time functions are compiled when they are called.	
+Whereas, procedures are compiled only once and can be called again and again as needed without being compiled each time.
+7.	The return statement of a function returns the control and function’s result value to the calling program.	
+While the return statement of the procedure returns control to the calling program, it can not return the result value.
+8.	Function doesn’t support try-catch blocks.	While it supports try-catch blocks.
+9.	Function can be operated in the SELECT statement.	While it can’t be operated in the SELECT statement.
+10.	Function does not support explicit transaction handles.	While procedure supports explicit transaction handles.
