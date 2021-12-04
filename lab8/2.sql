@@ -134,3 +134,89 @@ WHERE ID = 2;
 
 SELECT * FROM products;
 -----
+drop table passwords;
+CREATE  TABLE passwords(
+    ID INT GENERATED ALWAYS AS IDENTITY,
+    p_word VARCHAR,
+    is_val bool,
+   PRIMARY KEY (ID)
+);
+drop function  launch_d();
+CREATE FUNCTION launch_d()
+  RETURNS TRIGGER
+  LANGUAGE plpgsql
+  AS
+$$
+DECLARE
+    w varchar;
+    f bool;
+BEGIN
+        FOR w IN
+            SELECT p_word FROM passwords
+        LOOP
+            f = (valid_password(w));
+            RAISE NOTICE 'validation is: %', f;
+            RETURN null;
+        END LOOP;
+END;
+$$;
+
+-- CREATE FUNCTION valid_password (password VARCHAR)
+-- RETURNS bool AS $$
+--     BEGIN
+--         RETURN password ~* '^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$';
+--     END;
+-- $$ LANGUAGE PLPGSQL;
+--
+-- select valid_password('da9874123');
+-- select valid_password('ddddddddd');
+-- select valid_password('123456789');
+-- drop function valid_password;
+
+-- trigger
+CREATE TRIGGER l_d
+AFTER INSERT
+    ON passwords
+    FOR EACH ROW
+    EXECUTE function launch_d();
+
+INSERT INTO passwords(p_word)
+VALUES ('1234');
+select * from passwords;
+--e
+drop function  launch_e();
+CREATE FUNCTION launch_e()
+  RETURNS TRIGGER
+  LANGUAGE plpgsql
+  AS
+$$
+DECLARE
+    i int;
+    w varchar;
+    f bool;
+BEGIN
+        FOR i IN
+            SELECT id FROM passwords
+        LOOP
+            f = (returns_two(i));
+            RETURN null;
+        END LOOP;
+END;
+$$;
+-- CREATE FUNCTION returns_two(x integer, y out integer, z out integer)
+--  AS $$
+--     BEGIN
+--         z = x;
+--         y = x;
+--         RETURN;
+--     END;
+-- $$ LANGUAGE PLPGSQL;
+-- 
+-- SELECT returns_two(78) AS answer;
+-- SELECT returns_two(1) AS answer;
+-- drop function returns_two;
+CREATE TRIGGER l_e
+AFTER INSERT
+    ON passwords
+    FOR EACH ROW
+    EXECUTE function launch_e();
