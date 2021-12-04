@@ -21,35 +21,26 @@ VALUES ('Arnur','01-06-1992',29,150000,5,10000);
 INSERT INTO employees(name, date_of_birth, age, salary, workexperience, discount)
 VALUES ('Arnur','01-06-1992',29,150000,5,10000);
 --a
-CREATE PROCEDURE increase_salary()
-      AS $$
-      BEGIN
-          UPDATE employees
-          SET salary = salary * 1.1
-          WHERE workexperience >= 2;
-          UPDATE employees
-          SET discount = discount * 1.1
-          WHERE workexperience >= 2;
-          UPDATE employees
-          SET discount = discount * 1.01
-          WHERE workexperience >= 5;
-      END; $$
-      LANGUAGE plpgsql;
-CALL increase_salary();
-select * from employees;
---b
-CREATE PROCEDURE increase2_salary()
-      AS $$
-      BEGIN
-          UPDATE employees
-          SET salary = salary*1.15
-          WHERE  age>=40;
-          UPDATE employees
-          SET salary = salary*1.15
-          WHERE workexperience>=8;
-          UPDATE employees
-          SET discount = discount*1.20
-          WHERE workexperience>=8;
-      END; $$
-      LANGUAGE plpgsql;
-CALL increase2_salary();
+create procedure salary_inc() AS
+
+ $$
+ Begin
+     update employees set salary = salary + (salary*0.1) where workexperience / 2 > 0;
+     update employees set discount = discount + (salary*0.1) where workexperience / 2 > 0;
+     update employees set discount = discount + (salary*0.1) where workexperience > 5;
+ end;
+ $$
+language plpgsql;
+
+create procedure salary_inc2() AS
+    $$
+    BEGIN
+        update employees set salary = salary + (salary * 0.15) where age > 40;
+        update employees set salary = salary + (salary * 0.15) where workexperience > 8;
+        update employees set discount = discount + (discount * 0.20) where workexperience > 8;
+    end;
+    $$
+language plpgsql;
+
+call salary_inc();
+call salary_inc2();
