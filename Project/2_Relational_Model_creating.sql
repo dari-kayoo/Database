@@ -1,15 +1,15 @@
 drop table part;
 drop table suppliers;
-drop table produces;
-drop table manufacturer;
 drop table sales;
 drop table person;
 drop table company;
+drop table manufacturer;
 drop table vehicles;
-drop table options;
-drop table inventory;
+drop table produces;
 drop table customers;
+drop table inventory;
 drop table dealers;
+drop table options;
 drop table models;
 drop table brands;
 drop table automobile_company;
@@ -76,6 +76,15 @@ create table vehicles(
     foreign key (customer_id) references customers(id) ,
     foreign key (produces_id) references produces(id)
 );
+create table manufacturer(
+    id int primary key generated always as identity ,
+    name varchar(200) ,
+    location varchar(200) ,
+    brand_name varchar(20) ,
+    VIN varchar(20) ,
+    foreign key (VIN) references vehicles(VIN) ,
+    foreign key (brand_name) references brands(name)
+);
 create table company(
     id int primary key generated always as identity ,
     name varchar(200) ,
@@ -89,6 +98,7 @@ create table person(
     last_name varchar(100) ,
     gender varchar(10) ,
     driver_id int ,
+    income int ,
     customer_id int ,
     foreign key (customer_id) references customers(id)
 );
@@ -98,15 +108,6 @@ create table sales(
     dealer_id int ,
     date timestamp ,
     price double precision
-);
-create table manufacturer(
-    id int primary key generated always as identity ,
-    name varchar(200) ,
-    location varchar(200) ,
-    brand_name varchar(20) ,
-    produces_id int ,
-    foreign key (brand_name) references brands(name) ,
-    foreign key (produces_id) references produces(id)
 );
 create table suppliers(
     id int primary key generated always as identity ,
