@@ -55,41 +55,31 @@ values ('8 Bloomsbury Close, Boston', 'Boston', '8 Bloomsbury Close', '874717812
        ('36 Tunisia Drive, Boston', 'Boston', '36 Tunisia Drive', '87471781221', 1),
        ('655 Huntingdon Avenue, Boston', 'Boston', '655 Huntingdon Avenue', '87471781247', 1),
        ('789 Tunisia Drive, Chicago', 'Chicago', '789 Tunisia Drive', '87471781654', 2);
-insert into vehicles
-values ('2C4GJ453XYR693697'), ('5C4GJ453TYP697893'), ('6C4GJ453POT697892'),
-       ('7C4GJ453LKP694782'), ('2C4GJ453NJI693475'), ('7C4GJ453PL6937636'),
-       ('4C4GJ453LPS693674'), ('2C4GJ453YT6936722'), ('2C4GJ453XMJ693124'),
-       ('8C4GJ453XVC693611'), ('8C4GJ453XIU693645'), ('9C4GJ453UUI693600'),
-       ('2C4GJ453CDF693324'), ('2C4GJ453FRT693744'), ('9C4GJ453TYU693450'),
-       ('1F5GJ453SQP693742'), ('8C4GJ453LFG693475'), ('2C4GJ453HFR693964'),
-       ('7C4GJ453XYR693583'), ('2C4GJ453MYR693789'), ('5C4GJ453NBH693875'),
-       ('2C4GJ453BVC693697'), ('7C4GJ453KLo693895'), ('3C4GJ453OPI693462'),
-       ('6C4GJ453XCV693697'), ('2C4GJ453LKR693256'), ('6C4GJ453XYR693964'),
-       ('6C4GJ453JHG693697'), ('2C4GJ453DFR693147'), ('2C4GJ453XYR693745'),
-       ('5C4GJ453ERR693451'), ('5C4GJ453DER693476'), ('5C4GJ453QWE693562');
-insert into company(name)
-values ('Hertz'), ('Avis'), ('Avis'), ('Simple'), ('Hertz'),
-       ('Avis'), ('Avis'), ('Avis'), ('Hertz'), ('Avis'),
-       ('Simple'), ('Hertz'), ('Hertz'), ('Avis'), ('Fork'),
-       ('Avis'), ('Avis'), ('Fork'), ('Simple'), ('Avis'),
-       ('Avis'), ('Fork'), ('Fork'), ('Avis'), ('Simple'),
-       ('Simple'), ('Hertz'), ('Avis'), ('Hertz'), ('Hertz');
+insert into vehicles(vin, option_id, inventory_id, customer_id)
+values ('2C4GJ453XYR693697', 1, 2, 2), ('5C4GJ453TYP697893', 1, 2, 10 ), ('6C4GJ453POT697892', 1, 2, 14 ),
+       ('7C4GJ453LKP694782', 1, 2, 3), ('2C4GJ453NJI693475', 1, 2, 10 ), ('7C4GJ453PL6937636', 1, 2, 14 ),
+       ('4C4GJ453LPS693674', 1, 2, 4), ('2C4GJ453YT6936722', 1, 2, 11 ), ('2C4GJ453XMJ693124', 1, 2, 15 ),
+       ('8C4GJ453XVC693611', 1, 2, 5), ('8C4GJ453XIU693645', 1, 2, 12 ), ('9C4GJ453UUI693600', 1, 2,  8),
+       ('2C4GJ453CDF693324', 1, 2, 5 ), ('2C4GJ453FRT693744', 1, 2, 13 ), ('9C4GJ453TYU693450', 1, 2, 6),
+       ('1F5GJ453SQP693742', 1, 3, 6 ), ('8C4GJ453LFG693475', 1, 2, 14), ('2C4GJ453HFR693964', 1, 2, 5 ),
+       ('7C4GJ453XYR693583', 1, 2, 7 ), ('2C4GJ453MYR693789', 1, 2, 15 ), ('5C4GJ453NBH693875', 1, 2, 3 ),
+       ('2C4GJ453BVC693697', 1, 2, 8 ), ('7C4GJ453KLo693895', 1, 2, 16 ), ('3C4GJ453OPI693462', 1, 2, 2 ),
+       ('6C4GJ453XCV693697', 1, 2, 8 ), ('2C4GJ453LKR693256', 1, 2, 17 ), ('6C4GJ453XYR693964', 1, 2, 1 ),
+       ('6C4GJ453JHG693697', 1, 2, 9 ), ('2C4GJ453DFR693147', 1, 2, 12 ), ('2C4GJ453XYR693745', 1, 2, 1 ),
+       ('5C4GJ453ERR693451', 1, 2, 10), ('5C4GJ453DER693476', 1, 2, 13 ), ('5C4GJ453QWE693562', 1, 2, 1 );
+insert into company(name, customer_id)
+values ('Fork', 13), ('Avis', 14), ('Simple', 14),
+       ('Simple', 15), ('Hertz', 15), ('Avis', 15), ('Hertz', 16), ('Hertz', 17);
 insert into person(full_name, first_name, last_name, gender, driver_id)
 values ('John Robert Genry', 'John', 'Robert', 'man', 123),
-       ('Simon Win Jobs', 'Simon','Win', 'man', 145),
-       ('William Winner Kai', 'William','Winner', 'man', 985),
-       ('Ken Star Rob', 'Ken', 'Star', 'man', 456),
-       ('Teo Star Rob', 'Teo', 'Star', 'man', 745),
-       ('John Robert Ken', 'John', 'Robert', 'man', 632),
-       ('James Oliver Liam', 'James', 'Oliver', 'man', 148),
-       ('John James Noah', 'John', 'James', 'man', 457),
-       ('Lucas Ken Jobs', 'Lucas', 'Ken', 'man', 547),
-       ('Oliver Robert Ken', 'Oliver', 'Robert', 'man', 557),
-       ('William Liam Lucas', 'William', 'Liam', 'man', 967),
-       ('Bob Duke Nolen', 'Bob', 'Duke', 'man', 874),
-       ('Simon Bob James', 'Simon', 'Bob', 'man', 896),
-       ('Iggy Banner Lane', 'Iggy', 'Banner', 'man', 205),
-       ('Teo Gene Conan', 'Teo', 'Gene', 'man', 267);
+       ('Simon Win Jobs', 'Simon','Win', 'man', 124),
+       ('William Winner Kai', 'William','Winner', 'man', 125),
+       ('Ken Star Rob', 'Ken', 'Star', 'man', 126),
+       ('Teo Star Rob', 'Teo', 'Star', 'man', 127),
+       ('Iggy Banner Lane', 'Iggy', 'Banner', 'man', 897),
+       ('Teo Gene Conan', 'Teo', 'Gene', 'man', 899),
+       ('Jenny Taylor Swift', 'Jenny', 'Taylor', 'woman', 901),
+       ('Mia James Winner', 'Mia', 'James', 'woman', 902);
 insert into sales
 values ('2C4GJ453XYR693697', 1, 1, '2013-10-18', 2056000.00),
        ('5C4GJ453TYP697893', 2, 1, '2014-05-19', 5056000.00),
@@ -110,12 +100,13 @@ values ('2C4GJ453XYR693697', 1, 1, '2013-10-18', 2056000.00),
        ('2C4GJ453LKR693256', 12, 2, '2009-12-19', 6956000.00),
        ('6C4GJ453XYR693964', 13, 2, '2007-11-20', 3456000.00);
 insert into suppliers(name, location)
-values ('The Regional Retail Supply', '613 Liebler Rd Boston'), ('All in One Supply Warehouse', '1438 Trevett Rd Boston'),
+values ('Getrag', '613 Liebler Rd Boston'), ('All in One Supply Warehouse', '1438 Trevett Rd Boston'),
        ('Finest Farm Supply Warehouse', '203rd St Saint Albans, New York');
-insert into manufacturer(name, location)
-values ('Manufac', 'Red Blue 45'), ('ManufacturMan', '789 Road Cast Yellow'),
-       ('ManufacruraTen','Silk Way Light 56');
-insert into produces
+insert into manufacturer(name, location, brand_name, vin)
+values ('Manufac', 'Red Blue 45', 'Cadillac', '2C4GJ453XYR693697' ), ('ManufacturMan', '789 Road Cast Yellow', 'Chevrolet','1F5GJ453SQP693742' ),
+       ('ManufacruraTen','Silk Way Light 56', null ,'5C4GJ453TYP697893');
+--        ('Getrag', '788 Silk Way', null, '2C4GJ453XYR693697');
+insert into produces(date)
 values ('2012-10-01 00:00:00'), ('2017-06-01 00:00:00'), ('2018-07-01 00:00:00'),
        ('2019-02-01 00:00:00'), ('2019-03-01 00:00:00'), ('2005-05-01 00:00:00'),
        ('2006-09-01 00:00:00'), ('2020-11-01 00:00:00'), ('2017-10-01 00:00:00'),
