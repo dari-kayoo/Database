@@ -28,19 +28,19 @@ Group By brand_name
 Order By sum DESC
 LIMIT 2;
 
-SELECT brand_name, COUNT(brand_name)
+SELECT brand_name, COUNT(m.brand_name)
 FROM sales s
 INNER JOIN vehicles
 ON s.VIN = vehicles.vin
 WHERE date_part('year', (s.date::date)) = 2020
-INNER JOIN options O
-ON V.OptionId = V.OptionId
-INNER JOIN CarModel C
-ON O.ModelId = C.ModelId
-INNER JOIN Brand B
-ON C.BrandName = B.BrandName
-Group By C.BrandName
-Order By COUNT(C.BrandName) DESC
+INNER JOIN options o
+ON v.option_id = v.option_id
+INNER JOIN models m
+ON o.model_id = m.id
+INNER JOIN brands b
+ON m.brand_name = b.name
+Group By m.brand_name
+Order By COUNT(m.brand_name) DESC
 LIMIT 2;
 
 SELECT date_part('month', (s.date::date)) = 2020, COUNT(m.brand_name)
@@ -58,13 +58,3 @@ WHERE b.name = 'convertibles' and date_part('year', (s.date::date)) = 2020
 Group By m.brand_name
 Order By COUNT(m.brand_name) DESC
 LIMIT 1;
-
-SELECT dealers.name, MAX(date_part('day', (sales.date::date) - date_part('day', (sales.date::date))))
-FROM dealers
-INNER JOIN sales
-ON sales.id = dealers.id
-INNER JOIN inventory
-ON dealers.id = inventory.id
-INNER JOIN vehicles
-ON sales.VIN = vehicles.VIN
-Group By dealers.name;
