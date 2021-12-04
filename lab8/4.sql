@@ -26,8 +26,8 @@ create procedure salary_inc() AS
  $$
  Begin
      update employees set salary = salary + (salary*0.1) where workexperience / 2 > 0;
-     update employees set discount = discount + (salary*0.1) where workexperience / 2 > 0;
-     update employees set discount = discount + (salary*0.1) where workexperience > 5;
+     update employees set discount = discount + (discount*0.1) where workexperience / 2 > 0;
+     update employees set discount = discount + (discount*0.1) where workexperience > 5;
  end;
  $$
 language plpgsql;
