@@ -1,4 +1,7 @@
 create schema cd;
+drop table members;
+drop table booking;
+drop table facilities;
 CREATE TABLE cd.members(
     memid INT,
     surname CHARACTER VARYING(200),
@@ -9,19 +12,31 @@ CREATE TABLE cd.members(
     recommendedby INT,
     joindate TIMESTAMP
 );
-INSERT INTO cd.members
-VALUES (1, 'Smith', 'Darren', '8 Bloomsbury Close, Boston', 4321, '555-555-5555', 1, '2012-07-01 00:00:00'),
-       (2, 'Smith', 'Tracy', '8 Bloomsbury Close, New York', 4321, '555-555-5555', 1, '2012-07-02 12:08:23'),
-       (3, 'Rownam', 'Tim', '23 Highway Way, Boston', 5502, '8775178414', 55, '27-12-1995'),
-       (4, 'Joplette', 'Janice', '20 Crossing Road, New York', 5403, '87751784962', 85, '17-08-1999'),
-       (5, 'Butters', 'Gerald', '1065 Huntingdon Avenue, Boston', 6023, '87751784145', 68, '07-11-1991'),
-       (6, 'Tracy', 'Burton', '3 Tunisia Drive, Boston', 5823, '87751784234', 92, '27-04-1993'),
-       (7, 'Dare', 'Nancy', '6 Hunting Lodge Way, Boston', 5823, '87751784234', 92, '27-04-1993'),
-       (8, 'Boothe', 'Tim', '3 Bloomsbury Close, Reading, 00234', 5823, '87751784234', 92, '27-04-1993'),
-       (9, 'Stibbons', 'Ponder', '3 Tunisia Drive, Boston', 5823, '87751784234', 92, '27-04-1993'),
-       (10, 'Owen', 'Charles', '3 Tunisia Drive, Boston', 5823, '87751784234', 92, '27-04-1993'),
-       (11, 'Jones', 'David', '3 Tunisia Drive, Boston', 5823, '87751784234', 92, '27-04-1993'),
-       (12, 'Baker', 'Anne', '3 Tunisia Drive, Boston', 5823, '87751784234', 92, '27-04-1993');
+INSERT INTO members(memid, surname, firstname, address, zipcode, telephone, recommendedby, joindate)
+ VALUES
+(0, 'Luke', 'Brown', '2696 Stonepot Road', '90210', '123-123', NULL, '2008-01-31'),
+(1, 'Penny', 'Davis', '983 Church Street', '78234', '718-455', NULL, '2021-08-20'),
+(2, 'Karen', 'McCall','1305 Raver Croft Drive', '34589', '765-789', '1', '2021-10-04'),
+(3, 'Levi', 'Miller', '4456 Vineyard Drive', '23098', '084-465', NULL,'2021-12-07'),
+(4, 'Daisy', 'Stewart', '2710 Farland Street', '09823', '773-924', '2', '2021-12-08'),
+(5, 'Brandon', 'Mitchell', '5017 Burnside Avenue', '34512', '435-631', '2', '2021-12-21'),
+(6, 'Valerie', 'Smith', '5018 Burnside Avenue','67432', '435-690', NULL, '2021-11-29' ),
+(7, 'Melanie', 'Powell', '4036 Edsel Road', '90211', '267-480', '1', '2021-12-06'),
+(8, 'Sonya', 'Baker', '940 Irish Lane', '90220', '234-900', '3', '2021-09-10'),
+(9, 'Richard', 'Bell', '4701 Laurel Lane', '90230', '901-902', '1', '2021-09-08'),
+(10, 'Mike', 'Power', '1879 August Lane', '90100', '318-376', NULL, '2021-07-26'),
+(11, 'Chester', 'Woodbury', '2821 Trouser Leg Road', '09834', '245-098', NULL, '2021-07-20'),
+(12, 'Bruce', 'Johnson', '3124 Valley View Drive', '87600', '617-744', '1', '2021-08-06'),
+(13, 'Karen', 'Duffy', '335 Webster Street', '09867', '345-009', '2', '2021-09-14'),
+(14, 'Jonathan', 'Gay', '3427 Finwood Road', '90434', '732-514', '3', '2021-09-27'),
+(15, 'Kenneth', 'Duffy', '3376 Willow Greene Drive', '90834', '334-303', NULL, '2021-10-20'),
+(16, 'Heather', 'Pauli', '1533 Drummond Street', '98710', '973-226', '2', '2021-12-21'),
+(17, 'Kristie', 'McCombs', '3310 Palmer Road', '00000', '972-225', '1', '2021-12-06'),
+(18, 'Kenneth', 'Jhonsen', '504 Thorn Street', '09834', '307-567', NULL, '2021-12-21'),
+(19, 'Scott', 'Upton', '711 Hamill Avenue', '09800', '317-565','1', '2021-08-19'),
+(20, 'Karen', 'Lowa', '100 Stratford Court', '09812', '345-098', '4', '2021-10-12'),
+(21, 'Constance', 'Morris', '4594 Lightning Point Drive', '02345', NULL, '3', '2021-10-20'),
+(22, 'Edward', 'Cooper', '4529 Callison Lane', '45601', '445-001', '2', '2021-09-07');
 
 CREATE TABLE cd.booking(
     facid INT,
@@ -29,17 +44,6 @@ CREATE TABLE cd.booking(
     starttime TIMESTAMP,
     slots INT
 );
-INSERT INTO cd.booking
-VALUES (0, 12, '2012-10-01 00:00:00',1320),
-       (1, 12, '2012-10-02 00:00:00', 1278),
-       (2, 12, '2012-10-03 00:00:00', 1209),
-       (3, 4, '2012-10-04 00:00:00', 830),
-       (4, 5, '2012-10-05 00:00:00', 1404),
-       (5, 6, '2012-10-06 00:00:00', 228),
-       (6, 12, '2012-10-07 00:00:00',1104),
-       (7, 1, '2012-10-08 00:00:00',908),
-       (8, 2, '2012-10-09 00:00:00',911);
-
 CREATE TABLE cd.facilities(
     facid INT,
     name CHARACTER VARYING(100),
@@ -48,18 +52,6 @@ CREATE TABLE cd.facilities(
     initialoutlay NUMERIC,
     monthlymaintenance NUMERIC
 );
-INSERT INTO cd.facilities
-VALUES (0, 'Tennis Court 1', 5, 25, 10000, 200),
-       (1, 'Tennis Court 2', 5, 25, 8000, 200),
-       (2, 'Badminton Court', 0, 15.5, 4000, 50),
-       (3, 'Table Tennis', 0, 5, 320, 10),
-       (4, 'Massage Room 1', 35, 80, 4000, 3000),
-       (5, 'Massage Room 2', 35, 80, 4000, 3000),
-       (6, 'Squash Court', 3.5, 17.5, 5000, 80),
-       (7, 'Snooker Table', 0, 5, 450, 15),
-       (8, 'Pool Table',  0, 5, 400, 15);
-
-
 WITH RECURSIVE recommenders(recommender, member) AS (
 	SELECT recommendedby, memid
 		FROM cd.members
